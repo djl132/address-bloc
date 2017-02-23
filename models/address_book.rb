@@ -11,10 +11,10 @@ class AddressBook
      index = 0
      entries.each do |entry|
      # #10
-       if name < entry.name
-         break
+       if name > entry.name
+          index+= 1
        end
-       index+= 1
+       break
      end
      # #11
      entries.insert(index, Entry.new(name, phone_number, email))

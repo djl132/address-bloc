@@ -21,11 +21,16 @@ RSpec.describe AddressBook do
     end
     it "adds the correct information to entries" do
         book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+        book.add_entry('Aea Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+
         new_entry = book.entries[0]
+
 
         expect(new_entry.name).to eq('Ada Lovelace')
         expect(new_entry.phone_number).to eq('010.012.1815')
         expect(new_entry.email).to eq('augusta.king@lovelace.com')
+
+
     end
   end
 
