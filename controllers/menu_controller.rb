@@ -9,13 +9,15 @@ class MenuController
   end
 
   def main_menu
+
     # #2
     puts "Main Menu - #{address_book.entries.count} entries"
     puts "1 - View all entries"
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "5 - View an entry"
+    puts "6 - Exit"
     print "Enter your selection: "
 
     # #3
@@ -44,6 +46,11 @@ class MenuController
         main_menu
 
       when 5
+        system "clear"
+        view_entry_by_number
+        main_menu
+
+      when 6
         puts "Good-bye!"
         exit(0) #exits without error - is that what this does?
 
@@ -116,7 +123,22 @@ def entry_submenu(entry)
       puts "#{selection} is not a valid input"
       entry_submenu(entry)
   end
-end
+ end
+
+  def view_entry_by_number
+
+    puts "Enter entry number:"
+    index = gets.to_i
+    system "clear"
+
+    if (index <= address_book.entries.size && index > 0)
+      puts address_book.entries[index - 1].to_s
+    else
+      puts "Invalid entry"
+      view_entry_by_number
+    end
+
+  end
 
 
 end
