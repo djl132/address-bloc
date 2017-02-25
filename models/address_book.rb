@@ -13,12 +13,15 @@ class AddressBook
      # #9
      index = 0
      entries.each do |entry|
-     # #10
-       if name > entry.name
+
+     #only increase if greater, insert when less than next name lexicographically
+      if name >= entry.name
           index+= 1
-       end
-       break
-     end
+      else
+        break
+      end
+  end
+
      # #11
      entries.insert(index, Entry.new(name, phone_number, email))
    end
@@ -38,7 +41,7 @@ class AddressBook
      #change to iterable table????? THINK SQL?
      csv = CSV.parse(csv_text, headers: true, skip_blanks: true)
       csv.each do |row|
-       row_hash = row.to_hash #create an object with each object's header to its value 
+       row_hash = row.to_hash #create an object with each object's header to its value
        add_entry(row_hash["name"], row_hash["phone_number"], row_hash["email"])
      end
 
