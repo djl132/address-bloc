@@ -18,6 +18,7 @@ class MenuController
     puts "4 - Import entries from a CSV"
     puts "5 - View an entry"
     puts "6 - Exit"
+    puts "7 - destroy addressbook"
     print "Enter your selection: "
 
     # #3
@@ -53,6 +54,11 @@ class MenuController
       when 6
         puts "Good-bye!"
         exit(0) #exits without error - is that what this does?
+
+      when 7
+        puts "destroy all entries"
+        destroy
+        main_menu
 
       else
         system "clear"
@@ -220,6 +226,12 @@ def entry_submenu(entry)
         puts entry.to_s
         search_submenu(entry)
       end
+  end
+
+  def destroy
+    address_book.entries.each do |entry|
+      delete_entry(entry)
+    end
   end
 
 
