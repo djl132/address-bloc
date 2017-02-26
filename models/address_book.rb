@@ -48,4 +48,31 @@ class AddressBook
       puts "#{entries.inspect}"
    end
 
+   def binary_search(name)
+
+     #find interval of search - discrminates based on half value
+     lower = 0
+     upper = entries.length - 1
+
+
+       # search if lower
+      while lower <= upper
+
+         mid = (lower + upper)/2
+         mid_name = entries[mid].name
+
+        #  check mid first if
+         if name == mid_name
+           return entries[mid]
+         elsif name > mid_name
+           lower = mid + 1
+         elsif name < mid_name
+           upper = mid - 1
+         end
+       end
+
+       return nil
+     end
+
+
 end
